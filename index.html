@@ -4,491 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crochet Chic - Bolsos Artesanales</title>
-    <style>
-        :root {
-            --pastel-pink: #f8d7e8;
-            --light-pink: #fce4ec;
-            --white: #ffffff;
-            --gray: #757575;
-            --dark-gray: #424242;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--white);
-            color: var(--dark-gray);
-            line-height: 1.6;
-        }
-        /* Menú Desplegable*/
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            background-color: var(--pastel-pink);
-            transition: background 0.3s ease;
-        }
-
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            width: 100%;
-            height: 3px;
-            background-color: var(--dark-gray);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100vh;
-            background-color: var(--pastel-pink);
-            padding-top: 80px;
-            transition: right 0.3s ease;
-            z-index: 999;
-        }
-
-        nav.active {
-            right: 0;
-        }
-
-        nav ul {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1rem 2rem;
-            list-style: none;
-        }
-
-        nav li {
-            margin: 1rem 0;
-            width: 100%;
-        }
-
-        nav a {
-            display: block;
-            padding: 0.5rem 0;
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        nav a:hover {
-            color: var(--dark-gray);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--dark-gray);
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            padding: 0;
-            margin-top: 0;
-        }
-
-        #hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-            color: white;
-        }
-
-        .hero-overlay h1 {
-            color: white;
-            margin-bottom: 2rem;
-            font-size: 2.8rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s forwards;
-        }
-
-        .hero-overlay .btn {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s 0.4s forwards;
-        }
-        
-        #hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-            color: white;
-        }
-
-        .hero-overlay h1 {
-            color: white;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--pastel-pink);
-            color: var(--dark-gray);
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid var(--pastel-pink);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s 0.4s forwards;
-        }
-        
-        .btn:hover {
-            background-color: transparent;
-            border-color: var(--pastel-pink);
-        }
-        
-        /* Products Section */
-        .products {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: var(--pastel-pink);
-            bottom: 0;
-            left: 20%;
-        }
-        
-        .product-categories {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .category-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.6s forwards;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .category-image {
-            height: 400px;
-        }
-
-        .category-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .category-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-        }
-
-        .category-info h3 {
-            margin: 0;
-            color: var(--dark-gray);
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .product-categories {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* About Section */
-        .about {
-            background-color: var(--light-pink);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-        
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .about p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-icon {
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            color: var(--pastel-pink);
-        }
-        
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-        }
-        
-        .form-group {
-            position: relative;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
-            border-color: var(--pastel-pink);
-            outline: none;
-        }
-        
-        .form-submit {
-            background-color: var(--pastel-pink);
-            color: var(--dark-gray);
-            border: none;
-            padding: 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .form-submit:hover {
-            background-color: var(--dark-gray);
-            color: var(--white);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--pastel-pink);
-            color: var(--dark-gray);
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        
-        .footer-links a {
-            margin: 0 1rem;
-            color: var(--dark-gray);
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--white);
-        }
-        
-        .copyright {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Media Queries */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                padding: 0.5rem 0;
-            }
-            
-            nav li {
-                margin: 0.5rem 0;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo">Crochet Chic</div>
+        <a href="index.html" class="logo">Crochet Chic</a>
         <div class="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav class="nav-collapsed">
+        <nav>
             <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#products">Productos</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="novedades.html">Novedades</a></li>
+                <li><a href="bolsos-basicos.html">Bolsos Básicos</a></li>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
@@ -498,7 +29,7 @@
     <!-- Hero Section con video -->
     <section id="home" class="hero">
         <video autoplay muted loop id="hero-video">
-            <source src="video_prueba.mp4" type="video/mp4">
+            <source src="assets/video_prueba.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
         </video>
         <div class="hero-overlay">
@@ -515,7 +46,7 @@
         
         <div class="product-categories">
             <!-- Categoría 1 -->
-            <a href="#" class="category-card">
+            <a href="novedades.html" class="category-card">
                 <div class="category-image">
                     <img src="/api/placeholder/400/300" alt="Novedades">
                 </div>
@@ -525,12 +56,12 @@
             </a>
             
             <!-- Categoría 2 -->
-            <a href="#" class="category-card">
+            <a href="bolsos-basicos.html" class="category-card">
                 <div class="category-image">
-                    <img src="/api/placeholder/400/300" alt="Bolsos de hombro">
+                    <img src="/api/placeholder/400/300" alt="Bolsos básicos">
                 </div>
                 <div class="category-info">
-                    <h3>BOLSOS DE HOMBRO</h3>
+                    <h3>BOLSOS BÁSICOS</h3>
                 </div>
             </a>
         </div>
@@ -605,7 +136,7 @@
     
     <!-- Footer -->
     <footer>
-        <div class="logo">Crochet Chic</div>
+        <a href="index.html" class="logo">Crochet Chic</a>
         <div class="footer-links">
             <a href="#" title="Facebook">FB</a>
             <a href="#" title="Instagram">IG</a>
@@ -615,74 +146,6 @@
         <p class="copyright">© 2025 Crochet Chic. Todos los derechos reservados.</p>
     </footer>
     
-    <script>
-        // Control del menú desplegable
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
-            
-            // Cerrar menú al hacer clic en un enlace
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                });
-            });
-            
-            // Cambiar el color del header al hacer scroll
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.backgroundColor = 'var(--pastel-pink)';
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                } else {
-                    header.style.backgroundColor = 'transparent';
-                    header.style.boxShadow = 'none';
-                }
-            });
-        });
-        // Animación de aparición para las tarjetas de productos al hacer scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const productCards = document.querySelectorAll('.product-card');
-            
-            // Función para aplicar animaciones cuando los elementos están visibles
-            function checkIfInView() {
-                productCards.forEach((card, index) => {
-                    const rect = card.getBoundingClientRect();
-                    const inView = (
-                        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-                        rect.bottom >= 0
-                    );
-                    
-                    if (inView) {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, index * 150); // Agregamos un retraso para un efecto escalonado
-                    }
-                });
-            }
-            
-            // Verificar cuando se carga la página y al desplazarse
-            window.addEventListener('scroll', checkIfInView);
-            checkIfInView(); // Verificar también al cargar la página
-            
-            // Smooth scrolling para enlaces de navegación
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
