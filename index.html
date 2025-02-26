@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crochet Chic - Bolsos Artesanales</title>
+    <style>
+        :root {
+            --pastel-pink: #f8d7e8;
+            --light-pink: #fce4ec;
+            --white: #ffffff;
+            --gray: #757575;
+            --dark-gray: #424242;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--pastel-pink);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--dark-gray);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--dark-gray);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--light-pink);
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s forwards;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--pastel-pink);
+            color: var(--dark-gray);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--pastel-pink);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--pastel-pink);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--pastel-pink);
+            bottom: 0;
+            left: 20%;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .product-card.animate {
+            animation: fadeUp 0.6s forwards;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-btn {
+            display: inline-block;
+            background-color: var(--pastel-pink);
+            color: var(--dark-gray);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 2px solid var(--pastel-pink);
+            transition: all 0.3s ease;
+        }
+        
+        .product-btn:hover {
+            background-color: transparent;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light-pink);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--pastel-pink);
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--pastel-pink);
+            outline: none;
+        }
+        
+        .form-submit {
+            background-color: var(--pastel-pink);
+            color: var(--dark-gray);
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background-color: var(--dark-gray);
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--pastel-pink);
+            color: var(--dark-gray);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            margin: 0 1rem;
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                padding: 0.5rem 0;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Crochet Chic</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Bolsos de Crochet Artesanales</h1>
+        <p>Diseños únicos y exclusivos hechos a mano con amor y dedicación para ti</p>
+        <a href="#products" class="btn">Ver Colección</a>
+    </section>
+    
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="section-title">
+            <h2>Nuestros Productos</h2>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bolso Primavera</h3>
+                    <p class="product-price">€45.00</p>
+                    <p class="product-description">Bolso de crochet con diseño floral perfecto para la temporada de primavera.</p>
+                    <a href="#" class="product-btn">Añadir al carrito</a>
+                </div>
+            </div>
+            
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Tote Bag Verano</h3>
+                    <p class="product-price">€55.00</p>
+                    <p class="product-description">Bolso tipo tote espacioso y ligero, ideal para tus días de playa o paseos en la ciudad.</p>
+                    <a href="#" class="product-btn">Añadir al carrito</a>
+                </div>
+            </div>
+            
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Clutch Elegante</h3>
+                    <p class="product-price">€38.00</p>
+                    <p class="product-description">Clutch delicado para eventos especiales, con cierre y detalles elegantes.</p>
+                    <a href="#" class="product-btn">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>Sobre Nosotros</h2>
+        </div>
+        <div class="about-content">
+            <p>En Crochet Chic creamos bolsos artesanales con amor y dedicación. Cada pieza es única y confeccionada a mano utilizando las mejores técnicas y materiales.</p>
+            <p>Nuestro compromiso es ofrecerte productos de alta calidad que combinan diseño, funcionalidad y originalidad. Trabajamos con pasión para que cada bolso sea especial y duradero.</p>
+            <a href="#contact" class="btn">Contáctanos</a>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Contacto</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <h3>Dirección</h3>
+                        <p>Calle Artesanía 123, Madrid, España</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div>
+                        <h3>Teléfono</h3>
+                        <p>+34 612 345 678</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@crochet-chic.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⏰</span>
+                    <div>
+                        <h3>Horario</h3>
+                        <p>Lunes - Viernes: 10:00 - 19:00</p>
+                        <p>Sábado: 10:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Asunto" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" rows="5" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="logo">Crochet Chic</div>
+        <div class="footer-links">
+            <a href="#" title="Facebook">FB</a>
+            <a href="#" title="Instagram">IG</a>
+            <a href="#" title="Twitter">TW</a>
+            <a href="#" title="Pinterest">PT</a>
+        </div>
+        <p class="copyright">© 2025 Crochet Chic. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        // Animación de aparición para las tarjetas de productos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // Función para aplicar animaciones cuando los elementos están visibles
+            function checkIfInView() {
+                productCards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    const inView = (
+                        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.bottom >= 0
+                    );
+                    
+                    if (inView) {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, index * 150); // Agregamos un retraso para un efecto escalonado
+                    }
+                });
+            }
+            
+            // Verificar cuando se carga la página y al desplazarse
+            window.addEventListener('scroll', checkIfInView);
+            checkIfInView(); // Verificar también al cargar la página
+            
+            // Smooth scrolling para enlaces de navegación
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
