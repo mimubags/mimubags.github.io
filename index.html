@@ -34,50 +34,18 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            margin-right: 1rem;
-            transition: transform 0.5s ease;
-        }
-        
-        .logo-img:hover {
-            transform: rotate(10deg);
         }
         
         .logo {
             font-size: 2.5rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
             color: var(--dark-gray);
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform 0.3s ease;
         }
         
         .logo:hover {
             transform: scale(1.05);
-            color: #333;
-        }
-        
-        nav {
-            margin-left: auto;
         }
         
         nav ul {
@@ -128,22 +96,6 @@
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, transparent 30%, var(--light-pink) 70%);
-            opacity: 0.7;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
         .hero h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
@@ -170,34 +122,15 @@
             text-decoration: none;
             font-weight: 600;
             border: 2px solid var(--pastel-pink);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s 0.4s forwards;
         }
         
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--dark-gray);
-            transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1);
-            z-index: -1;
-        }
-        
         .btn:hover {
-            color: var(--white);
-            border-color: var(--dark-gray);
-        }
-        
-        .btn:hover::before {
-            width: 100%;
+            background-color: transparent;
+            border-color: var(--pastel-pink);
         }
         
         /* Products Section */
@@ -228,12 +161,6 @@
             background-color: var(--pastel-pink);
             bottom: 0;
             left: 20%;
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-        }
-        
-        .section-title:hover h2::after {
-            transform: scaleX(1);
         }
         
         .product-grid {
@@ -247,10 +174,9 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
-            position: relative;
         }
         
         .product-card.animate {
@@ -258,8 +184,8 @@
         }
         
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
         .product-image {
@@ -268,53 +194,26 @@
             position: relative;
         }
         
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 80%, rgba(0, 0, 0, 0.1));
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .product-card:hover .product-image::before {
-            opacity: 1;
-        }
-        
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease;
         }
         
         .product-card:hover .product-image img {
-            transform: scale(1.1) rotate(1deg);
+            transform: scale(1.1);
         }
         
         .product-info {
             padding: 1.5rem;
             background-color: var(--white);
             position: relative;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-card:hover .product-info {
-            transform: translateY(-5px);
         }
         
         .product-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .product-card:hover .product-title {
-            color: var(--pastel-pink);
         }
         
         .product-price {
@@ -330,9 +229,7 @@
         }
         
         .product-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             background-color: var(--pastel-pink);
             color: var(--dark-gray);
             padding: 0.6rem 1.5rem;
@@ -340,113 +237,11 @@
             text-decoration: none;
             font-weight: 500;
             border: 2px solid var(--pastel-pink);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .product-btn span {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--dark-gray);
-            transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
-            z-index: -1;
+            transition: all 0.3s ease;
         }
         
         .product-btn:hover {
-            color: var(--white);
-            border-color: var(--dark-gray);
-        }
-        
-        .product-btn:hover::before {
-            width: 100%;
-        }
-        
-        .product-btn:hover span {
-            transform: scale(1.2);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .modal.active {
-            display: block;
-            animation: fadeIn 0.3s forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            margin: 10% auto;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            transform: translateY(-50px);
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-        
-        .modal.active .modal-content {
-            animation: slideDown 0.4s forwards;
-        }
-        
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        
-        .close-modal:hover {
-            color: var(--pastel-pink);
-            transform: rotate(90deg);
-        }
-        
-        .modal-title {
-            color: var(--dark-gray);
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--pastel-pink);
-        }
-        
-        .contact-form-modal {
-            display: grid;
-            gap: 1.5rem;
+            background-color: transparent;
         }
         
         /* About Section */
@@ -454,55 +249,16 @@
             background-color: var(--light-pink);
             padding: 5rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background-color: rgba(248, 215, 232, 0.3);
-            top: -150px;
-            left: -150px;
-            z-index: 1;
-        }
-        
-        .about::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: rgba(248, 215, 232, 0.2);
-            bottom: -100px;
-            right: -100px;
         }
         
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
         
         .about p {
             margin-bottom: 2rem;
             font-size: 1.1rem;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.6s ease;
-        }
-        
-        .about.in-view p {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .about.in-view p:nth-child(2) {
-            transition-delay: 0.2s;
         }
         
         /* Contact Section */
@@ -528,49 +284,21 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: flex-start;
-            transform: translateX(-20px);
-            opacity: 0;
-            transition: all 0.5s ease;
         }
-        
-        .contact.in-view .contact-item {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        .contact.in-view .contact-item:nth-child(1) { transition-delay: 0.1s; }
-        .contact.in-view .contact-item:nth-child(2) { transition-delay: 0.2s; }
-        .contact.in-view .contact-item:nth-child(3) { transition-delay: 0.3s; }
-        .contact.in-view .contact-item:nth-child(4) { transition-delay: 0.4s; }
         
         .contact-icon {
             margin-right: 1rem;
             font-size: 1.2rem;
             color: var(--pastel-pink);
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-item:hover .contact-icon {
-            transform: scale(1.2);
         }
         
         .contact-form {
             display: grid;
             gap: 1.5rem;
-            transform: translateX(20px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        
-        .contact.in-view .contact-form {
-            transform: translateX(0);
-            opacity: 1;
-            transition-delay: 0.3s;
         }
         
         .form-group {
             position: relative;
-            overflow: hidden;
         }
         
         .form-input {
@@ -585,24 +313,6 @@
         .form-input:focus {
             border-color: var(--pastel-pink);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(248, 215, 232, 0.3);
-        }
-        
-        .form-input:not(:placeholder-shown) + .form-label,
-        .form-input:focus + .form-label {
-            transform: translateY(-20px);
-            font-size: 0.85rem;
-            color: var(--pastel-pink);
-        }
-        
-        .form-label {
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            font-size: 1rem;
-            color: var(--gray);
-            pointer-events: none;
-            transition: all 0.3s ease;
         }
         
         .form-submit {
@@ -614,30 +324,12 @@
             font-weight: 600;
             border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--dark-gray);
             transition: all 0.3s ease;
-            z-index: -1;
         }
         
         .form-submit:hover {
+            background-color: var(--dark-gray);
             color: var(--white);
-        }
-        
-        .form-submit:hover::before {
-            width: 100%;
         }
         
         /* Footer */
@@ -646,19 +338,6 @@
             color: var(--dark-gray);
             text-align: center;
             padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 100px;
-            background-color: rgba(255, 255, 255, 0.1);
-            top: -50px;
-            left: -50%;
-            transform: rotate(5deg);
         }
         
         .footer-links {
@@ -671,54 +350,16 @@
             margin: 0 1rem;
             color: var(--dark-gray);
             font-size: 1.2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
+            transition: color 0.3s ease;
         }
         
         .footer-links a:hover {
             color: var(--white);
-            background-color: var(--dark-gray);
-            transform: translateY(-5px);
         }
         
         .copyright {
             margin-top: 1.5rem;
             font-size: 0.9rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Toast notification */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--pastel-pink);
-            color: var(--dark-gray);
-            padding: 1rem 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            z-index: 1000;
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-        }
-        
-        .toast.show {
-            transform: translateX(0);
-        }
-        
-        .toast-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
         }
         
         /* Animations */
@@ -729,28 +370,8 @@
             }
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-        
         /* Media Queries */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            
-            .logo-container {
-                margin-bottom: 1rem;
-            }
-            
             nav ul {
                 flex-direction: column;
                 padding: 0.5rem 0;
@@ -767,40 +388,28 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
-            .modal-content {
-                margin: 20% auto;
-                width: 95%;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="/api/placeholder/60/60" alt="Crochet Chic Logo" class="logo-img">
-                <div class="logo">Crochet Chic</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#products">Productos</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
+        <div class="logo">Crochet Chic</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
     
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Bolsos de Crochet Artesanales</h1>
-            <p>Diseños únicos y exclusivos hechos a mano con amor y dedicación para ti</p>
-            <a href="#products" class="btn">Ver Colección</a>
-        </div>
+        <h1>Bolsos de Crochet Artesanales</h1>
+        <p>Diseños únicos y exclusivos hechos a mano con amor y dedicación para ti</p>
+        <a href="#products" class="btn">Ver Colección</a>
     </section>
     
     <!-- Products Section -->
@@ -811,7 +420,7 @@
         
         <div class="product-grid">
             <!-- Producto 1 -->
-            <div class="product-card" data-product="Bolso Primavera">
+            <div class="product-card">
                 <div class="product-image">
                     <img src="/api/placeholder/400/300" alt="Bolso de crochet">
                 </div>
@@ -819,12 +428,13 @@
                     <h3 class="product-title">Bolso Primavera</h3>
                     <p class="product-price">€45.00</p>
                     <p class="product-description">Bolso de crochet con diseño floral perfecto para la temporada de primavera.</p>
-                    <a href="#" class="product-btn" data-product="Bolso Primavera" data-price="€45.00">¡Lo quiero! <span>❤️</span></a>
+                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
+                    <button class="product-btn" onclick="mostrarFormulario('Bolso Primavera')">Solicitar información</button>
                 </div>
             </div>
             
             <!-- Producto 2 -->
-            <div class="product-card" data-product="Tote Bag Verano">
+            <div class="product-card">
                 <div class="product-image">
                     <img src="/api/placeholder/400/300" alt="Bolso de crochet">
                 </div>
@@ -832,12 +442,13 @@
                     <h3 class="product-title">Tote Bag Verano</h3>
                     <p class="product-price">€55.00</p>
                     <p class="product-description">Bolso tipo tote espacioso y ligero, ideal para tus días de playa o paseos en la ciudad.</p>
-                    <a href="#" class="product-btn" data-product="Tote Bag Verano" data-price="€55.00">¡Lo quiero! <span>❤️</span></a>
+                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
+                    <button class="product-btn" onclick="mostrarFormulario('Tote Bag Verano')">Solicitar información</button>
                 </div>
             </div>
             
             <!-- Producto 3 -->
-            <div class="product-card" data-product="Clutch Elegante">
+            <div class="product-card">
                 <div class="product-image">
                     <img src="/api/placeholder/400/300" alt="Bolso de crochet">
                 </div>
@@ -845,39 +456,12 @@
                     <h3 class="product-title">Clutch Elegante</h3>
                     <p class="product-price">€38.00</p>
                     <p class="product-description">Clutch delicado para eventos especiales, con cierre y detalles elegantes.</p>
-                    <a href="#" class="product-btn" data-product="Clutch Elegante" data-price="€38.00">¡Lo quiero! <span>❤️</span></a>
+                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
+                    <button class="product-btn" onclick="mostrarFormulario('Bolso Primavera')">Solicitar información</button>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Modal para contacto -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 class="modal-title">¡Estás a un paso de conseguir tu bolso favorito!</h2>
-            <form id="contactFormModal" class="contact-form-modal">
-                <div class="form-group">
-                    <input type="text" id="nameModal" class="form-input" placeholder=" " required>
-                    <label for="nameModal" class="form-label">Nombre completo</label>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="phoneModal" class="form-input" placeholder=" " required>
-                    <label for="phoneModal" class="form-label">Teléfono (WhatsApp)</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="emailModal" class="form-input" placeholder=" " required>
-                    <label for="emailModal" class="form-label">Email</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="messageModal" class="form-input" rows="3" placeholder=" " required></textarea>
-                    <label for="messageModal" class="form-label">Mensaje (opcional)</label>
-                </div>
-                <input type="hidden" id="productInfo" value="">
-                <button type="submit" class="form-submit">Enviar Solicitud</button>
-            </form>
-        </div>
-    </div>
     
     <!-- About Section -->
     <section id="about" class="about">
@@ -994,6 +578,70 @@
                     });
                 });
             });
+        });
+    </script>
+    <!-- Modal de formulario de contacto -->
+    <div id="formularioModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background-color: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%; position: relative;">
+        <button onclick="cerrarFormulario()" style="position: absolute; right: 15px; top: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        
+        <h3 id="modalTitle" style="margin-bottom: 1.5rem; color: var(--dark-gray);">Solicitar información</h3>
+        
+        <form action="https://formspree.io/f/tu-codigo-formspree" method="POST">
+            <input type="hidden" id="productoSeleccionado" name="producto">
+            
+            <div style="margin-bottom: 1rem;">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+            <label for="telefono">Teléfono (opcional):</label>
+            <input type="tel" id="telefono" name="telefono" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;">
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required></textarea>
+            </div>
+            
+            <button type="submit" style="background-color: var(--pastel-pink); color: var(--dark-gray); border: none; padding: 1rem 2rem; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%;">Enviar solicitud</button>
+        </form>
+        </div>
+    </div>
+    
+    <script>
+        function mostrarFormulario(nombreProducto) {
+        // Actualizar el título del modal y el producto seleccionado
+        document.getElementById('modalTitle').innerText = 'Solicitar información sobre: ' + nombreProducto;
+        document.getElementById('productoSeleccionado').value = nombreProducto;
+        
+        // Mostrar el modal
+        const modal = document.getElementById('formularioModal');
+        modal.style.display = 'flex';
+        
+        // Evitar que se pueda hacer scroll en el fondo mientras el modal está abierto
+        document.body.style.overflow = 'hidden';
+        }
+        
+        function cerrarFormulario() {
+        // Ocultar el modal
+        document.getElementById('formularioModal').style.display = 'none';
+        
+        // Restaurar el scroll
+        document.body.style.overflow = 'auto';
+        }
+        
+        // Cerrar el modal si se hace clic fuera del formulario
+        document.getElementById('formularioModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+            cerrarFormulario();
+        }
         });
     </script>
 </body>
