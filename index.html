@@ -25,15 +25,17 @@
             color: var(--dark-gray);
             line-height: 1.6;
         }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--pastel-pink);
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 100;
+        /* Menú Desplegable*/
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
         }
         
         .logo {
@@ -47,27 +49,86 @@
         .logo:hover {
             transform: scale(1.05);
         }
-        
-        nav ul {
+
+        header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--pastel-pink);
+            transition: background 0.3s ease;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--pastel-pink);
+            padding-top: 80px;
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        nav.active {
+            right: 0;
+        }
+
+        nav ul {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1rem 2rem;
             list-style: none;
-            padding: 1rem 0;
         }
-        
+
         nav li {
-            margin: 0 1.5rem;
+            margin: 1rem 0;
+            width: 100%;
         }
-        
+
         nav a {
+            display: block;
+            padding: 0.5rem 0;
+            font-size: 1.2rem;
             text-decoration: none;
             color: var(--dark-gray);
             font-weight: 500;
-            padding: 0.5rem;
             transition: all 0.3s ease;
             position: relative;
         }
-        
         nav a:hover {
             color: var(--dark-gray);
         }
@@ -89,28 +150,81 @@
         
         /* Hero Section */
         .hero {
-            background-color: var(--light-pink);
-            text-align: center;
-            padding: 4rem 1rem;
             position: relative;
+            height: 100vh;
             overflow: hidden;
+            padding: 0;
+            margin-top: 0;
         }
-        
-        .hero h1 {
+
+        #hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-overlay h1 {
+            color: white;
+            margin-bottom: 2rem;
             font-size: 2.8rem;
-            margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s forwards;
         }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+
+        .hero-overlay .btn {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 0.8s 0.2s forwards;
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+        
+        #hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-overlay h1 {
+            color: white;
+            margin-bottom: 2rem;
         }
         
         .btn {
@@ -163,85 +277,60 @@
             left: 20%;
         }
         
-        .product-grid {
+        .product-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        .product-card {
-            background-color: var(--white);
-            border-radius: 10px;
+
+        .category-card {
+            position: relative;
             overflow: hidden;
+            border-radius: 5px;
+            text-decoration: none;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
-        }
-        
-        .product-card.animate {
             animation: fadeUp 0.6s forwards;
         }
-        
-        .product-card:hover {
+
+        .category-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
-        .product-image {
-            height: 300px;
-            overflow: hidden;
-            position: relative;
+
+        .category-image {
+            height: 400px;
         }
-        
-        .product-image img {
+
+        .category-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
+
+        .category-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
         }
-        
-        .product-info {
-            padding: 1.5rem;
-            background-color: var(--white);
-            position: relative;
-        }
-        
-        .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-price {
+
+        .category-info h3 {
+            margin: 0;
             color: var(--dark-gray);
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .product-description {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .product-btn {
-            display: inline-block;
-            background-color: var(--pastel-pink);
-            color: var(--dark-gray);
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
             font-weight: 500;
-            border: 2px solid var(--pastel-pink);
-            transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
-        
-        .product-btn:hover {
-            background-color: transparent;
+
+        @media (max-width: 768px) {
+            .product-categories {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* About Section */
@@ -384,10 +473,6 @@
             .contact-container {
                 grid-template-columns: 1fr;
             }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
         }
     </style>
 </head>
@@ -395,7 +480,12 @@
     <!-- Header Section -->
     <header>
         <div class="logo">Crochet Chic</div>
-        <nav>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-collapsed">
             <ul>
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#products">Productos</a></li>
@@ -405,11 +495,16 @@
         </nav>
     </header>
     
-    <!-- Hero Section -->
+    <!-- Hero Section con video -->
     <section id="home" class="hero">
-        <h1>Bolsos de Crochet Artesanales</h1>
-        <p>Diseños únicos y exclusivos hechos a mano con amor y dedicación para ti</p>
-        <a href="#products" class="btn">Ver Colección</a>
+        <video autoplay muted loop id="hero-video">
+            <source src="video_prueba.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="hero-overlay">
+            <h1>Bolsos de Crochet Artesanales</h1>
+            <a href="#products" class="btn">Ver Colección</a>
+        </div>
     </section>
     
     <!-- Products Section -->
@@ -418,48 +513,26 @@
             <h2>Nuestros Productos</h2>
         </div>
         
-        <div class="product-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
+        <div class="product-categories">
+            <!-- Categoría 1 -->
+            <a href="#" class="category-card">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Novedades">
                 </div>
-                <div class="product-info">
-                    <h3 class="product-title">Bolso Primavera</h3>
-                    <p class="product-price">€45.00</p>
-                    <p class="product-description">Bolso de crochet con diseño floral perfecto para la temporada de primavera.</p>
-                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
-                    <button class="product-btn" onclick="mostrarFormulario('Bolso Primavera')">Solicitar información</button>
+                <div class="category-info">
+                    <h3>NOVEDADES</h3>
                 </div>
-            </div>
+            </a>
             
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
+            <!-- Categoría 2 -->
+            <a href="#" class="category-card">
+                <div class="category-image">
+                    <img src="/api/placeholder/400/300" alt="Bolsos de hombro">
                 </div>
-                <div class="product-info">
-                    <h3 class="product-title">Tote Bag Verano</h3>
-                    <p class="product-price">€55.00</p>
-                    <p class="product-description">Bolso tipo tote espacioso y ligero, ideal para tus días de playa o paseos en la ciudad.</p>
-                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
-                    <button class="product-btn" onclick="mostrarFormulario('Tote Bag Verano')">Solicitar información</button>
+                <div class="category-info">
+                    <h3>BOLSOS DE HOMBRO</h3>
                 </div>
-            </div>
-            
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="/api/placeholder/400/300" alt="Bolso de crochet">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Clutch Elegante</h3>
-                    <p class="product-price">€38.00</p>
-                    <p class="product-description">Clutch delicado para eventos especiales, con cierre y detalles elegantes.</p>
-                    <!-- Dentro de la información del producto, reemplaza el botón "Añadir al carrito" por: -->
-                    <button class="product-btn" onclick="mostrarFormulario('Bolso Primavera')">Solicitar información</button>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
     
@@ -543,6 +616,37 @@
     </footer>
     
     <script>
+        // Control del menú desplegable
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+            
+            // Cambiar el color del header al hacer scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'var(--pastel-pink)';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.backgroundColor = 'transparent';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        });
         // Animación de aparición para las tarjetas de productos al hacer scroll
         document.addEventListener('DOMContentLoaded', function() {
             const productCards = document.querySelectorAll('.product-card');
@@ -578,70 +682,6 @@
                     });
                 });
             });
-        });
-    </script>
-    <!-- Modal de formulario de contacto -->
-    <div id="formularioModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background-color: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%; position: relative;">
-        <button onclick="cerrarFormulario()" style="position: absolute; right: 15px; top: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
-        
-        <h3 id="modalTitle" style="margin-bottom: 1.5rem; color: var(--dark-gray);">Solicitar información</h3>
-        
-        <form action="https://formspree.io/f/tu-codigo-formspree" method="POST">
-            <input type="hidden" id="productoSeleccionado" name="producto">
-            
-            <div style="margin-bottom: 1rem;">
-            <label for="nombre">Nombre completo:</label>
-            <input type="text" id="nombre" name="nombre" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required>
-            </div>
-            
-            <div style="margin-bottom: 1rem;">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required>
-            </div>
-            
-            <div style="margin-bottom: 1rem;">
-            <label for="telefono">Teléfono (opcional):</label>
-            <input type="tel" id="telefono" name="telefono" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;">
-            </div>
-            
-            <div style="margin-bottom: 1.5rem;">
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" style="width: 100%; padding: 0.8rem; border: 1px solid #e0e0e0; border-radius: 5px;" required></textarea>
-            </div>
-            
-            <button type="submit" style="background-color: var(--pastel-pink); color: var(--dark-gray); border: none; padding: 1rem 2rem; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%;">Enviar solicitud</button>
-        </form>
-        </div>
-    </div>
-    
-    <script>
-        function mostrarFormulario(nombreProducto) {
-        // Actualizar el título del modal y el producto seleccionado
-        document.getElementById('modalTitle').innerText = 'Solicitar información sobre: ' + nombreProducto;
-        document.getElementById('productoSeleccionado').value = nombreProducto;
-        
-        // Mostrar el modal
-        const modal = document.getElementById('formularioModal');
-        modal.style.display = 'flex';
-        
-        // Evitar que se pueda hacer scroll en el fondo mientras el modal está abierto
-        document.body.style.overflow = 'hidden';
-        }
-        
-        function cerrarFormulario() {
-        // Ocultar el modal
-        document.getElementById('formularioModal').style.display = 'none';
-        
-        // Restaurar el scroll
-        document.body.style.overflow = 'auto';
-        }
-        
-        // Cerrar el modal si se hace clic fuera del formulario
-        document.getElementById('formularioModal').addEventListener('click', function(event) {
-        if (event.target === this) {
-            cerrarFormulario();
-        }
         });
     </script>
 </body>
