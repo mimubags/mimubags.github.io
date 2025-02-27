@@ -71,3 +71,62 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Este script debe colocarse al final de tus páginas o ser incluido como un archivo externo
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los botones de interés
+    const interestButtons = document.querySelectorAll('.interest-button');
+    
+    // Añadir el event listener a cada botón
+    interestButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Obtener información del producto
+            const productContainer = this.closest('.product-item');
+            const productId = productContainer.dataset.productId;
+            const productName = productContainer.querySelector('h3').textContent;
+            const redirectUrl = this.dataset.redirectUrl;
+            
+            // Enviar evento a Google Analytics
+            gtag('event', 'interest_click', {
+                'event_category': 'Producto',
+                'event_label': productName,
+                'value': productId
+            });
+            
+            // Redirigir al usuario después de un breve retraso
+            setTimeout(() => {
+                window.location.href = redirectUrl;
+            }, 300);
+        });
+    });
+    
+    // Función para guardar en localStorage
+    function saveInterestToLocalStorage(data) {
+        let interests = JSON.parse(localStorage.getItem('productInterests') || '[]');
+        interests.push(data);
+        localStorage.setItem('productInterests', JSON.stringify(interests));
+    }
+    
+    // Función para enviar al servidor
+    function sendInterestToServer(data) {
+        // Aquí puedes usar fetch para enviar los datos a tu backend
+        fetch('/api/track-interest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error('Error al enviar datos de interés');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+});

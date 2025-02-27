@@ -6,6 +6,15 @@
     <title>Bolsos Básicos - Crochet Chic</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JWXXR1MV7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1JWXXR1MV7');
+</script>
 <body>
     <!-- Header Section -->
     <header>
@@ -39,14 +48,15 @@
         
         <div class="product-grid">
             <!-- Producto 1 -->
-            <div class="product-item">
+            <!-- Estructura modular para producto -->
+            <div class="product-item" data-product-id="tote-bag-clasico">
                 <div class="product-image">
                     <img src="/api/placeholder/400/300" alt="Tote Bag Clásico">
                 </div>
                 <div class="product-details">
                     <h3>Tote Bag Clásico</h3>
                     <p class="price">59,99 €</p>
-                    <a href="#" class="btn">Ver Detalles</a>
+                    <button class="btn interest-button" data-redirect-url="https://www.vinted.es/items/5109154412-bolso-crochet">¡Lo quiero ❤️!</button>
                 </div>
             </div>
 
