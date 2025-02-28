@@ -3,23 +3,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     
-    menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    });
-    
-    // Cerrar menú al hacer clic en un enlace
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            nav.classList.remove('active');
-            menuToggle.classList.remove('active');
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
-    });
+        
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
     
     // Cambiar el color del header al hacer scroll
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
+        if (!header) return;
+        
         if (window.scrollY > 100) {
             header.style.backgroundColor = 'var(--pastel-pink)';
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
@@ -48,14 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     item.style.opacity = '1';
                     item.style.transform = 'translateY(0)';
-                }, index * 150); // Agregamos un retraso para un efecto escalonado
+                }, index * 150);
             }
         });
     }
     
     // Verificar cuando se carga la página y al desplazarse
     window.addEventListener('scroll', checkIfInView);
-    checkIfInView(); // Verificar también al cargar la página
+    checkIfInView();
     
     // Smooth scrolling para enlaces de navegación
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -70,63 +74,52 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-
-// Este script debe colocarse al final de tus páginas o ser incluido como un archivo externo
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todos los botones de interés
+    
+    // SEGUIMIENTO DE BOLSOS - Optimizado solo para Google Analytics
     const interestButtons = document.querySelectorAll('.interest-button');
     
-    // Añadir el event listener a cada botón
     interestButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
             // Obtener información del producto
             const productContainer = this.closest('.product-item');
-            const productId = productContainer.dataset.productId;
-            const productName = productContainer.querySelector('h3').textContent;
-            const redirectUrl = this.dataset.redirectUrl;
+            let productId = "desconocido";
+            let productName = "Bolso desconocido";
+            const redirectUrl = this.dataset.redirectUrl || "https://www.vinted.es";
             
-            // Enviar evento a Google Analytics
-            gtag('event', 'interest_click', {
-                'event_category': 'Producto',
-                'event_label': productName,
-                'value': productId
-            });
+            // Extraer información del producto de manera segura
+            if (productContainer) {
+                productId = productContainer.dataset.productId || productContainer.id || "producto-sin-id";
+                const nameElement = productContainer.querySelector('h3');
+                if (nameElement) {
+                    productName = nameElement.textContent;
+                }
+            }
+            
+            console.log(`Click en: ${productName} (ID: ${productId})`);
+            
+            // Verificar que gtag esté disponible
+            if (typeof gtag === 'function') {
+                // Enviar evento detallado a Google Analytics
+                gtag('event', 'interest_click', {
+                    'event_category': 'Producto',
+                    'event_label': productName,
+                    'product_id': productId,
+                    'page_location': window.location.href,
+                    'page_title': document.title,
+                    'redirect_url': redirectUrl
+                });
+                
+                console.log("✅ Evento enviado a Google Analytics");
+            } else {
+                console.error("❌ Error: gtag no está disponible");
+            }
             
             // Redirigir al usuario después de un breve retraso
             setTimeout(() => {
                 window.location.href = redirectUrl;
-            }, 300);
+            }, 500); // Aumentado a 500ms para asegurar que el evento se registre
         });
     });
-    
-    // Función para guardar en localStorage
-    function saveInterestToLocalStorage(data) {
-        let interests = JSON.parse(localStorage.getItem('productInterests') || '[]');
-        interests.push(data);
-        localStorage.setItem('productInterests', JSON.stringify(interests));
-    }
-    
-    // Función para enviar al servidor
-    function sendInterestToServer(data) {
-        // Aquí puedes usar fetch para enviar los datos a tu backend
-        fetch('/api/track-interest', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (!response.ok) {
-                console.error('Error al enviar datos de interés');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
 });
