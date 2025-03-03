@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white text-gray-800 font-sans;
+}
+
+.page-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.btn-primary {
+  @apply bg-mimu-pink-dark hover:bg-opacity-90 text-white font-medium py-2 px-6 rounded-full transition-all duration-300 shadow-sm;
+}
+
+.btn-outline {
+  @apply border-2 border-mimu-pink-dark text-mimu-pink-dark hover:bg-mimu-pink-dark hover:text-white font-medium py-2 px-6 rounded-full transition-all duration-300;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-display font-semibold mb-8 text-center;
+}
+
+.container-custom {
+  @apply container mx-auto px-4 md:px-8 max-w-7xl;
+}
+
+.nav-link {
+  @apply relative text-gray-700 hover:text-mimu-pink-dark transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-mimu-pink-dark after:transition-all hover:after:w-full;
+}
+
+.nav-link.active {
+  @apply text-mimu-pink-dark after:w-full;
+}
+
+.product-card {
+  @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.whatsapp-btn {
+  @apply flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-full transition-all duration-300 shadow-sm;
+}
