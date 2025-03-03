@@ -25,7 +25,7 @@ const Home = () => {
           loop 
           playsInline
         >
-          <source src="https://player.vimeo.com/external/517090081.hd.mp4?s=80e7a4b0a6eec1a29d3855f64dae7a48a7c9a183&profile_id=175" type="video/mp4" />
+          <source src="/video_prueba.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>

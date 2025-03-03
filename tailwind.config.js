@@ -10,8 +10,8 @@ export default {
         'mimu-beige': '#F5F0E6',
       },
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-        display: ['Bodoni Moda', 'serif'],
+        sans: ['Helvetica', 'Arial', 'sans-serif'],
+        display: ['Helvetica Bold', 'Helvetica','Arial Bold', 'Arial', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
