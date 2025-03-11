@@ -30,7 +30,7 @@ const Home = () => {
           loop 
           playsInline
         >
-          <source src="public\video_prueba.mp4" type="video/mp4" />
+          <source src="video_prueba.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
