@@ -33,7 +33,7 @@ const NewArrivals = () => {
             viewport={{ once: true }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              src="/Bolsos/night-out-bags-disco.jpg"
               alt="Nueva Colección"
               className="w-full h-[600px] object-cover"
             />
@@ -45,7 +45,7 @@ const NewArrivals = () => {
             viewport={{ once: true }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              src="/Bolsos/night-out-bags-table.jpg"
               alt="Nueva Colección Detalle"
               className="w-full h-[600px] object-cover"
             />

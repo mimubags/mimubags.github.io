@@ -54,3 +54,9 @@ body {
 .product-tag-limited {
   @apply bg-mimu-pink-dark/60 text-white;
 }
+
+.sedgwick-ave-regular {
+  font-family: "Sedgwick Ave", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

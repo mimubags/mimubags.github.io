@@ -23,8 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(`Hola! Quiero ${name}.`);
-    window.open(`https://wa.me/+34600000000?text=${message}`, '_blank');
+    const message = encodeURIComponent(`Hola! Querría el bag ${name}. Gracias!`);
+    window.open(`https://wa.me/+34651999713?text=${message}`, '_blank');
   };
 
   return (

@@ -163,7 +163,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Email</h4>
-                    <p className="text-gray-600">info@mimubags.com</p>
+                    <p className="text-gray-600">mimubags@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -174,7 +174,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Teléfono</h4>
-                    <p className="text-gray-600">+34 600 000 000</p>
+                    <p className="text-gray-600">+34 651 999 713</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -186,7 +186,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Ubicación</h4>
-                    <p className="text-gray-600">Madrid, España</p>
+                    <p className="text-gray-600">Barcelona, España</p>
                   </div>
                 </div>
               </div>

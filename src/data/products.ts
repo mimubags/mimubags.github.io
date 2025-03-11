@@ -27,7 +27,8 @@ export const products: Product[] = [
     imageUrl: '/Bolsos/chain-bag.jpg',
     hoverImageUrl: 'https://images.unsplash.com/photo-1575032617751-6ddec2089882?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     description: 'Bolso tote amplio ideal para la playa o días de compras.',
-    category: 'new'
+    category: 'new',
+    featured: true
   },
   {
     id: 'bag-003',

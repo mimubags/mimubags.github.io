@@ -25,25 +25,25 @@ const ContactForm = () => {
 
     try {
       await emailjs.send(
-        'service_8bdd6yl', // Replace with your EmailJS service ID
-        'template_tcm04rk', // Replace with your EmailJS template ID
+        'service_8bdd6yl', // Revisa que este ID sea el correcto
+        'template_tcm04rk', // Verifica este template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: 'mimubags@gmail.com'
         },
-        'pdK2eslbwAHbXEAoc' // Replace with your EmailJS public key
+        'pdK2eslbwAHbXEAoc' // Revisa que sea tu public key válida
       );
 
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
       
-      // Reset the success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
     } catch (err) {
+      console.error('Error in emailjs.send:', err); // Para ver el error exacto en consola
       setError('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
     } finally {
       setIsSubmitting(false);

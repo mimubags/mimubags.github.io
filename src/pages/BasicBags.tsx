@@ -22,9 +22,6 @@ const BasicBags = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-display font-semibold text-gray-800 mb-4">Bolsos Básicos</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Nuestra colección de bolsos esenciales. Diseños atemporales que combinan con cualquier outfit y te acompañarán en tu día a día.
-          </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
