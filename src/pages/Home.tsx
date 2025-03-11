@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import ProductCard from '../components/ProductCard';
 import { getFeaturedProducts } from '../data/products';
 
 const Home = () => {
   const featuredProducts = getFeaturedProducts();
+
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('featured-products');
+    productsSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <motion.div
@@ -25,41 +30,26 @@ const Home = () => {
           loop 
           playsInline
         >
-          <source src="/video_prueba.mp4" type="video/mp4" />
+          <source src="public\video_prueba.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-display font-bold text-white mb-4"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            mimubags
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-white mb-8 max-w-2xl"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            Bolsos de crochet artesanales con diseños únicos y elegantes
-          </motion.p>
-          <motion.div
+          <motion.button
+            onClick={scrollToProducts}
+            className="text-white hover:text-mimu-pink-dark transition-colors duration-300"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
+            whileHover={{ y: 5 }}
           >
-            <Link to="/novedades" className="btn-primary">
-              Ver colección
-            </Link>
-          </motion.div>
+            <ArrowDown size={48} strokeWidth={1.5} />
+          </motion.button>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-20">
+      <section id="featured-products" className="py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -70,7 +60,7 @@ const Home = () => {
           >
             <h2 className="text-3xl md:text-4xl font-display font-semibold">Productos Destacados</h2>
             <Link to="/novedades" className="flex items-center text-mimu-pink-dark hover:text-mimu-pink-dark/80 transition-colors">
-              Ver todos <ArrowRight size={16} className="ml-1" />
+              Ver todos <ArrowDown size={16} className="ml-1" />
             </Link>
           </motion.div>
           
@@ -82,6 +72,7 @@ const Home = () => {
                 name={product.name}
                 price={product.price}
                 imageUrl={product.imageUrl}
+                hoverImageUrl={product.hoverImageUrl}
                 description={product.description}
               />
             ))}
@@ -112,7 +103,7 @@ const Home = () => {
               <img 
                 src="https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                 alt="Artesanía de crochet" 
-                className="rounded-lg shadow-md w-full h-auto"
+                className="shadow-md w-full h-auto"
               />
             </motion.div>
             

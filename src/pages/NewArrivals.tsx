@@ -22,10 +22,35 @@ const NewArrivals = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-display font-semibold text-gray-800 mb-4">Novedades</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Descubre nuestras últimas creaciones. Bolsos de crochet con diseños frescos y modernos para complementar tu estilo.
-          </p>
         </motion.div>
+        
+        {/* New Collection Showcase */}
+        <div className="grid grid-cols-4 gap-4 mb-16">
+          <motion.div 
+            className="col-span-3 relative overflow-hidden"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Nueva Colección"
+              className="w-full h-[600px] object-cover"
+            />
+          </motion.div>
+          <motion.div 
+            className="col-span-1 relative overflow-hidden"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Nueva Colección Detalle"
+              className="w-full h-[600px] object-cover"
+            />
+          </motion.div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newProducts.map(product => (
@@ -35,7 +60,9 @@ const NewArrivals = () => {
               name={product.name}
               price={product.price}
               imageUrl={product.imageUrl}
+              hoverImageUrl={product.hoverImageUrl}
               description={product.description}
+              category="new"
             />
           ))}
         </div>
