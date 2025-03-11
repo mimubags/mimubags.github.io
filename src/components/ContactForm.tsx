@@ -26,7 +26,7 @@ const ContactForm = () => {
     try {
       await emailjs.send(
         'service_8bdd6yl', // Revisa que este ID sea el correcto
-        'template_tcm04rk', // Verifica este template ID
+        'template_ph5pw2h', // Verifica este template ID
         {
           from_name: formData.name,
           from_email: formData.email,
