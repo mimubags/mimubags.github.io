@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Truck, Clock } from 'lucide-react';
 
 interface ProductCardProps {
   id: string;
   name: string;
   price: number;
   imageUrl: string;
+  hoverImageUrl?: string;
   description: string;
+  category?: 'new' | 'basic';
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, imageUrl }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ 
+  id, 
+  name, 
+  price, 
+  imageUrl, 
+  hoverImageUrl, 
+  category 
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(`Hola! Quiero ${name}.`);
     window.open(`https://wa.me/+34600000000?text=${message}`, '_blank');
@@ -18,34 +29,50 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, imageUrl }) 
 
   return (
     <motion.div 
-      className="product-card"
+      className="bg-white"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <div className="relative overflow-hidden group">
+      <div 
+        className="relative aspect-square overflow-hidden bg-gray-100"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <img 
-          src={imageUrl} 
+          src={isHovered && hoverImageUrl ? hoverImageUrl : imageUrl}
           alt={name} 
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-opacity duration-300"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white text-lg font-medium px-4 py-2 bg-black bg-opacity-50 rounded-md">
-            Ver detalles
-          </span>
+        
+        {/* Product Tags */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Free Shipping Tag */}
+          <div className="product-tag product-tag-shipping absolute top-2 right-2">
+            <Truck size={14} className="text-mimu-pink-dark mr-1" />
+            <span>Envío Gratuito</span>
+          </div>
+          
+          {/* Limited Stock Tag - Only for New Products */}
+          {category === 'new' && (
+            <div className="product-tag product-tag-limited absolute top-2 left-2">
+              <Clock size={14} className="text-white mr-1" />
+              <span>Stock Limitado</span>
+            </div>
+          )}
         </div>
       </div>
       
-      <div className="p-4">
-        <h3 className="text-lg font-semibold">{name}</h3>
-        <div className="flex justify-between items-center mt-4">
-          <span className="text-mimu-pink-dark font-semibold">{price.toFixed(2)} €</span>
+      <div className="mt-4">
+        <h3 className="text-lg font-display font-medium">{name}</h3>
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-lg font-display">{price.toFixed(2)} €</span>
           <button 
             onClick={handleWhatsAppClick}
-            className="whatsapp-btn"
+            className="whatsapp-btn text-sm"
           >
-            <MessageCircle size={18} />
+            <MessageCircle size={16} />
             ¡Lo quiero!
           </button>
         </div>

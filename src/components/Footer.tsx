@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Instagram, Facebook, Mail } from 'lucide-react';
+import { ShoppingBag, Instagram, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="ml-2 text-lg font-display font-semibold text-gray-800">mimubags</span>
             </Link>
             <p className="text-gray-600 text-center md:text-left">
-              Bolsos de crochet artesanales con diseños únicos y elegantes.
+              Bolsos de crochet artesanales con diseños únicos.
             </p>
           </div>
           
@@ -29,13 +29,10 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <h3 className="text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex space-x-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
+              <a href="https://www.instagram.com/mimubags/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
-                <Facebook size={24} />
-              </a>
-              <a href="mailto:info@mimubags.com" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
+              <a href="mailto:mimubags@gmail.com" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
                 <Mail size={24} />
               </a>
             </div>

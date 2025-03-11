@@ -28,7 +28,7 @@ const Navbar = () => {
     >
       <div className="container-custom flex justify-between items-center">
         <NavLink to="/" className="flex items-center">
-          <span className="ml-2 text-xl font-display font-semibold text-gray-800">mimubags</span>
+          <span className="ml-2 text-xl font-display font-semibold text-gray-800">mimu</span>
         </NavLink>
 
         {/* Desktop Navigation */}

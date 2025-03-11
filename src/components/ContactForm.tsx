@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,24 +9,45 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send the form data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset the success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      await emailjs.send(
+        'service_8bdd6yl', // Replace with your EmailJS service ID
+        'template_tcm04rk', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'mimubags@gmail.com'
+        },
+        'pdK2eslbwAHbXEAoc' // Replace with your EmailJS public key
+      );
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Reset the success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -53,6 +75,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mimu-pink-dark focus:border-transparent"
+              disabled={isSubmitting}
             />
           </div>
           
@@ -68,6 +91,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mimu-pink-dark focus:border-transparent"
+              disabled={isSubmitting}
             />
           </div>
           
@@ -83,15 +107,21 @@ const ContactForm = () => {
               required
               rows={4}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-mimu-pink-dark focus:border-transparent"
+              disabled={isSubmitting}
             />
           </div>
+
+          {error && (
+            <div className="text-red-500 text-sm">{error}</div>
+          )}
           
           <button
             type="submit"
             className="w-full btn-primary flex items-center justify-center"
+            disabled={isSubmitting}
           >
             <Send size={18} className="mr-2" />
-            Enviar mensaje
+            {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
           </button>
         </form>
       )}
