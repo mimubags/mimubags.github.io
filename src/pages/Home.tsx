@@ -43,27 +43,11 @@ const Home = () => {
           loop 
           playsInline
         >
-          <source src="/video_prueba.mp4" type="video/mp4" />
+          <source src="/portada_web.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-display font-bold text-white mb-4"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            mimubags
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-white mb-12 max-w-2xl"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            Bolsos de crochet artesanales con diseños únicos y elegantes
-          </motion.p>
           <motion.button
             onClick={scrollToProducts}
             className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-4 transition-colors duration-300"
@@ -103,6 +87,7 @@ const Home = () => {
                 imageUrl={product.imageUrl}
                 hoverImageUrl={product.hoverImageUrl}
                 description={product.description}
+                category={product.category} // Asegúrate de pasar la categoría aquí
               />
             ))}
           </div>
@@ -192,7 +177,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Email</h4>
-                    <p className="text-gray-600">info@mimubags.com</p>
+                    <p className="text-gray-600">mimubags@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -203,7 +188,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Teléfono</h4>
-                    <p className="text-gray-600">+34 600 000 000</p>
+                    <p className="text-gray-600">+34 651 999 713</p>
                   </div>
                 </div>
                 <div className="flex items-start">

@@ -12,7 +12,7 @@ const BasicBags = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-24 pb-20"
+      className="pt-32 pb-20" // Aumenta el padding-top aquí
     >
       <div className="container-custom">
         <motion.div

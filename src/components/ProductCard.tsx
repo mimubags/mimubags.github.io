@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Truck, Clock } from 'lucide-react';
+import { MessageCircle, Clock } from 'lucide-react';
 
 interface ProductCardProps {
   id: string;
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(`Hola! Querría el bag ${name}. Gracias!`);
+    const message = encodeURIComponent(`Hola! Querría el ${name}. Gracias!`);
     window.open(`https://wa.me/+34651999713?text=${message}`, '_blank');
   };
 

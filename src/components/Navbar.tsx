@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, Instagram, GitBranch as BrandTiktok } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {Truck} from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,9 +55,10 @@ const Navbar = () => {
           <motion.div 
             initial={{ height: 32, opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="bg-mimu-pink-dark text-white text-center py-2 text-sm fixed w-full z-50 top-0"
+            className="bg-mimu-pink-dark text-white text-center py-2 text-sm fixed w-full z-50 top-0 flex justify-center items-center"
           >
-            Envío gratuito en todos los pedidos
+            <span>Envío gratuito en todos los pedidos!</span>
+            <Truck size={14} className="text-white ml-2" />
           </motion.div>
         )}
       </AnimatePresence>
