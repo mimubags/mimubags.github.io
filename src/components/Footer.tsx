@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Instagram, Mail } from 'lucide-react';
+import { ShoppingBag, Instagram } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';  // Add this import
 
 const Footer = () => {
@@ -42,7 +42,7 @@ const Footer = () => {
                 rel="noopener noreferrer" 
                 className="text-gray-600 hover:text-mimu-pink-dark transition-colors"
               >
-                <FaTiktok size={24} />
+                <FaTiktok size={22} />
               </a>
             </div>
           </div>
