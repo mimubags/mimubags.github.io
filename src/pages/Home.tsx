@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
@@ -8,6 +8,19 @@ import { getFeaturedProducts } from '../data/products';
 
 const Home = () => {
   const featuredProducts = getFeaturedProducts();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if we should scroll to the about section
+    if (location.state?.scrollToAbout) {
+      const aboutSection = document.getElementById('about-section');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      // Clear the state
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   const scrollToProducts = () => {
     const productsSection = document.getElementById('featured-products');
@@ -35,15 +48,31 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-display font-bold text-white mb-4"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            mimubags
+          </motion.h1>
+          <motion.p 
+            className="text-xl md:text-2xl text-white mb-12 max-w-2xl"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Bolsos de crochet artesanales con diseños únicos y elegantes
+          </motion.p>
           <motion.button
             onClick={scrollToProducts}
-            className="text-white hover:text-mimu-pink-dark transition-colors duration-300"
+            className="bg-white/90 hover:bg-white text-gray-900 rounded-full p-4 transition-colors duration-300"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             whileHover={{ y: 5 }}
           >
-            <ArrowDown size={48} strokeWidth={1.5} />
+            <ArrowDown size={24} strokeWidth={1.5} />
           </motion.button>
         </div>
       </section>
@@ -81,7 +110,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-mimu-pink">
+      <section id="about-section" className="py-20 bg-mimu-pink">
         <div className="container-custom">
           <motion.h2 
             className="section-title"
@@ -163,7 +192,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Email</h4>
-                    <p className="text-gray-600">mimubags@gmail.com</p>
+                    <p className="text-gray-600">info@mimubags.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -174,7 +203,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Teléfono</h4>
-                    <p className="text-gray-600">+34 651 999 713</p>
+                    <p className="text-gray-600">+34 600 000 000</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -186,7 +215,7 @@ const Home = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800">Ubicación</h4>
-                    <p className="text-gray-600">Barcelona, España</p>
+                    <p className="text-gray-600">Madrid, España</p>
                   </div>
                 </div>
               </div>

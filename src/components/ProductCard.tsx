@@ -48,12 +48,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
         
         {/* Product Tags */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Free Shipping Tag */}
-          <div className="product-tag product-tag-shipping absolute top-2 right-2">
-            <Truck size={14} className="text-mimu-pink-dark mr-1" />
-            <span>Envío Gratuito</span>
-          </div>
-          
           {/* Limited Stock Tag - Only for New Products */}
           {category === 'new' && (
             <div className="product-tag product-tag-limited absolute top-2 left-2">

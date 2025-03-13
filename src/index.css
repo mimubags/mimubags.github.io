@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white text-gray-800 font-sans;
+  @apply bg-white text-gray-900 font-sans;
 }
 
 .page-transition {
@@ -23,7 +23,7 @@ body {
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-display font-semibold mb-8 text-center;
+  @apply text-3xl md:text-4xl font-display font-semibold mb-8 text-center text-gray-900;
 }
 
 .container-custom {
@@ -31,7 +31,7 @@ body {
 }
 
 .nav-link {
-  @apply relative text-gray-700 hover:text-mimu-pink-dark transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-mimu-pink-dark after:transition-all hover:after:w-full;
+  @apply relative text-gray-900 hover:text-mimu-pink-dark transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-mimu-pink-dark after:transition-all hover:after:w-full;
 }
 
 .nav-link.active {
@@ -47,16 +47,6 @@ body {
   @apply px-3 py-1 rounded-full flex items-center text-xs font-medium backdrop-blur-sm;
 }
 
-.product-tag-shipping {
-  @apply bg-white/60 text-gray-700;
-}
-
 .product-tag-limited {
   @apply bg-mimu-pink-dark/60 text-white;
-}
-
-.sedgwick-ave-regular {
-  font-family: "Sedgwick Ave", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
