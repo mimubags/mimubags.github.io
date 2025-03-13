@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Menu, X, Instagram, GitBranch as BrandTiktok } from 'lucide-react';
+import { Menu, X, Instagram } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';  // Nueva importación
 import { motion, AnimatePresence } from 'framer-motion';
-import {Truck} from 'lucide-react';
+import { Truck } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,7 +117,7 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 className="text-gray-900 hover:text-mimu-pink-dark transition-colors"
               >
-                <BrandTiktok size={20} />
+                <FaTiktok size={20} />
               </a>
             </div>
 
@@ -191,7 +192,7 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                   className="text-gray-900 hover:text-mimu-pink-dark transition-colors"
                 >
-                  <BrandTiktok size={20} />
+                  <FaTiktok size={20} />
                 </a>
               </div>
             </div>

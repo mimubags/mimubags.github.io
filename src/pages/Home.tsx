@@ -46,7 +46,7 @@ const Home = () => {
           <source src="/portada_web.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div> {/* Reduce la opacidad aquí */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <motion.button
             onClick={scrollToProducts}

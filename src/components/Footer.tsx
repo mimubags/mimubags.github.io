@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, Instagram, Mail } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';  // Add this import
 
 const Footer = () => {
   return (
@@ -29,11 +30,19 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <h3 className="text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/mimubags/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
+              <a href="https://www.instagram.com/mimubags/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-600 hover:text-mimu-pink-dark transition-colors"
+              >
                 <Instagram size={24} />
               </a>
-              <a href="mailto:mimubags@gmail.com" className="text-gray-600 hover:text-mimu-pink-dark transition-colors">
-                <Mail size={24} />
+              <a href="https://www.tiktok.com/@mimubags" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-600 hover:text-mimu-pink-dark transition-colors"
+              >
+                <FaTiktok size={24} />
               </a>
             </div>
           </div>
