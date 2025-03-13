@@ -1,10 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '../components/ProductCard';
 import { getNewArrivals } from '../data/products';
 
 const NewArrivals = () => {
   const newProducts = getNewArrivals();
+  const [imageLoaded1, setImageLoaded1] = useState(false);
+  const [imageLoaded2, setImageLoaded2] = useState(false);
 
   return (
     <motion.div
@@ -12,7 +14,7 @@ const NewArrivals = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="pt-32 pb-20" // Aumenta el padding-top aquí
+      className="pt-32 pb-20"
     >
       <div className="container-custom">
         <motion.div
@@ -32,11 +34,18 @@ const NewArrivals = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <img 
-              src="\Bolsos\night-out-bags-disco.jpg"
-              alt="Nueva Colección 1"
-              className="w-full h-[600px] object-cover"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageLoaded1 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img 
+                src="\Bolsos\night-out-bags-disco.jpg"
+                alt="Nueva Colección 1"
+                className="w-full h-[600px] object-cover"
+                onLoad={() => setImageLoaded1(true)}
+              />
+            </motion.div>
           </motion.div>
           <motion.div 
             className="col-span-3 relative overflow-hidden"
@@ -44,11 +53,18 @@ const NewArrivals = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <img 
-              src="\Bolsos\night-out-bags-table.jpg"
-              alt="Nueva Colección 2"
-              className="w-full h-[600px] object-cover"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageLoaded2 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img 
+                src="\Bolsos\night-out-bags-table.jpg"
+                alt="Nueva Colección 2"
+                className="w-full h-[600px] object-cover"
+                onLoad={() => setImageLoaded2(true)}
+              />
+            </motion.div>
           </motion.div>
         </div>
 
@@ -60,11 +76,18 @@ const NewArrivals = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <img 
-              src="\Bolsos\night-out-bags-disco.jpg"
-              alt="Nueva Colección"
-              className="w-full h-[400px] object-cover"
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageLoaded1 ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img 
+                src="\Bolsos\night-out-bags-disco.jpg"
+                alt="Nueva Colección"
+                className="w-full h-[400px] object-cover"
+                onLoad={() => setImageLoaded1(true)}
+              />
+            </motion.div>
           </motion.div>
         </div>
         
